@@ -1,3 +1,28 @@
+# Storyblok sidebar application auth module extension
+
+> Extends storyblok's default authentication with adittional environment configuration. The configuration values will be passed on as url params only when the user is logged in to storyblok.
+
+## Example
+```
+  modules: [
+    [
+      '@virtual-identity/nuxt-auth',
+      {
+        id: process.env.CONFIDENTIAL_CLIENT_ID,
+        secret: process.env.CONFIDENTIAL_CLIENT_SECRET,
+        redirect_uri: process.env.CONFIDENTIAL_CLIENT_REDIRECT_URI,
+        external_api_key_staging: process.env.EXTERNAL_DATA_API_KEY_STAGING,
+        external_api_key_prod: process.env.EXTERNAL_DATA_API_KEY_PRODUCTION
+      }
+    ]
+  ],
+```
+Onced user is logged in to storyblok, some environment variables will be exposed in the URL. 
+`www.example.com?space_id=space_id&external_api_key_staging=external_api_key_staging&external_api_key_production=external_api_key_prod`
+
+
+
+
 # @storyblok/nuxt-auth
 [![npm (scoped with tag)](https://img.shields.io/npm/v/@storyblok/nuxt-auth/latest.svg?style=flat-square)](https://npmjs.com/package/@storyblok/nuxt-auth)
 [![npm](https://img.shields.io/npm/dt/@storyblok/nuxt-auth.svg?style=flat-square)](https://npmjs.com/package/@storyblok/nuxt-auth)
